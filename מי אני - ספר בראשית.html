@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מי אני בספר בראשית</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&display=swap">
+<style>
+:root{--bg:#d8bf8c;--paper:#f1e3c0;--ink:#2b2118;--soft:#6b5a43;--acc:#234a7d;--ok:#4f6b2a;--bad:#8a2b3a;--line:#b99d62;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#19130d;--paper:#2a2118;--ink:#efe3c8;--soft:#b8a888;--acc:#8fb2e0;--ok:#9bbd6a;--bad:#e08a97;--line:#5a4a32;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#19130d;--paper:#2a2118;--ink:#efe3c8;--soft:#b8a888;--acc:#8fb2e0;--ok:#9bbd6a;--bad:#e08a97;--line:#5a4a32;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Frank Ruhl Libre","David","Times New Roman",serif;font-size:19px;line-height:1.55;min-height:100vh}
+main{max-width:620px;margin:0 auto;padding:18px 14px 40px}
+h1{font-size:2rem;font-weight:900;text-align:center;margin:6px 0 2px}
+.sub{text-align:center;color:var(--soft);margin:0 0 14px}
+.track{position:relative;height:74px;margin:6px 6px 14px}
+.line{position:absolute;right:0;left:0;top:34px;height:6px;border-radius:3px;background:var(--line)}
+.fill{position:absolute;right:0;top:34px;height:6px;border-radius:3px;background:var(--acc);width:0;transition:width .6s}
+.camel{position:absolute;top:0;font-size:30px;line-height:1;transform:translateX(50%);transition:right .6s}
+.st{position:absolute;top:26px;transform:translateX(50%);text-align:center;font-size:.72rem;color:var(--soft);white-space:nowrap}
+.st b{display:block;font-size:1.2rem;font-weight:400;margin-top:-2px}
+.st i{display:block;width:3px;height:0}
+.scroll{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:22px 18px 18px;box-shadow:0 0 0 6px var(--paper),0 0 0 8px var(--line);margin:0 8px}
+.medal{width:84px;height:84px;margin:-62px auto 10px;border-radius:50%;background:var(--paper);border:3px solid var(--acc);display:grid;place-items:center;font-size:44px}
+.count{text-align:center;color:var(--soft);font-size:.95rem}
+.q{font-size:1.4rem;font-weight:700;text-align:center;margin:6px 0 16px;line-height:1.4}
+.a{display:block;width:100%;margin:10px 0;padding:13px 14px;font:inherit;font-size:1.15rem;color:var(--ink);background:transparent;border:2px solid var(--line);border-radius:10px;cursor:pointer;text-align:center}
+.a:hover:not(:disabled){border-color:var(--acc)}
+.a:focus-visible,.nx:focus-visible,.sh:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.a.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 20%,transparent);font-weight:700}
+.a.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 18%,transparent);animation:sh .35s}
+.a:disabled{cursor:default}
+@keyframes sh{25%{transform:translateX(6px)}75%{transform:translateX(-6px)}}
+.fb{margin-top:14px;padding:12px 14px;border-right:5px solid var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent);border-radius:6px}
+.fb strong{display:block}
+.nx,.sh{display:block;margin:14px auto 0;padding:11px 26px;font:inherit;font-weight:700;color:var(--paper);background:var(--acc);border:0;border-radius:999px;cursor:pointer}
+:root:not([data-theme="light"]) .nx,:root:not([data-theme="light"]) .sh{color:#19130d}
+.res{text-align:center}
+.res .big{font-size:3.2rem;font-weight:900;line-height:1.1}
+.res h2{font-size:1.6rem;margin:6px 0}
+.res .re{background:none;color:var(--soft);border:2px solid var(--line)}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main>
+<h1>מי אני בספר בראשית</h1>
+<p class="sub">עשרים שאלות, מגן עדן ועד מצרים</p>
+<div class="track" aria-hidden="true">
+<div class="line"></div><div class="fill" id="fill"></div>
+<div class="st" style="right:0%"><b>🌳</b>גן עדן</div>
+<div class="st" style="right:33.3%"><b>🌈</b>התיבה</div>
+<div class="st" style="right:66.6%"><b>⛺</b>כנען</div>
+<div class="st" style="right:100%"><b>🏺</b>מצרים</div>
+<div class="camel" id="camel">🐪</div>
+</div>
+<section class="scroll" id="card">
+<div class="medal" id="medal"></div>
+<div class="count" id="count"></div>
+<div class="q" id="q"></div>
+<div id="ans"></div>
+<div class="fb" id="fb" hidden></div>
+<button class="nx" id="nx" hidden></button>
+</section>
+<section class="scroll res" id="res" hidden>
+<div class="medal">📜</div>
+<div class="big" id="score"></div>
+<h2 id="rank"></h2>
+<p id="msg"></p>
+<button class="sh" id="share">שתפו במשפחה</button>
+<button class="sh re" id="again">עוד פעם</button>
+</section>
+</main>
+<script>
+const Q=[
+["👶","הילד השלישי של אדם וחווה","שת","יפת","לוי","שת נולד אחרי שהבל נהרג, ואדם וחווה ראו בו זרע אחר תחת הבל."],
+["🏜️","עליו נאמר “הוא יהיה פרא אדם, ידו בכל ויד כל בו”","ישמעאל","עשיו","נמרוד","המלאך אמר זאת להגר עוד לפני שישמעאל נולד."],
+["🕰️","חי עד הגיל המופלג ביותר בתנ״ך, 969","מתושלח","אברהם","אדם","לפי חישוב השנים בפרשה, מתושלח מת בשנת המבול."],
+["💍","האישה שאברהם מתחתן איתה לאחר מות שרה:","קטורה","הגר","רבקה","לקטורה נולדו שישה בנים, ביניהם מדיין."],
+["🦌","על מי נאמר: “איש יודע ציד איש שדה”","עשיו","נמרוד","יעקב","עשיו נולד אדמוני, ולכן נקרא גם אדום."],
+["🖐️","מי אמר ועל מי: “הקול קול יעקב והידיים ידי עשיו”","יצחק על יעקב","יצחק על עשיו","יעקב על יהודה","יצחק כבר לא ראה היטב, ולכן משש את הידיים."],
+["🌹","על מי נאמר: “יפת תואר ויפת מראה”","רחל","דינה","אסתר","יעקב עבד שבע שנים בשבילה, והן היו בעיניו כימים אחדים."],
+["🐺","מי הוא: “בן אוני”","בנימין","יוסף","זבולון","“בן אוני” הוא השם שנתנה לו רחל אמו, ויעקב קרא לו בנימין. הוא גם היחיד מבני יעקב שנולד בארץ כנען."],
+["🪙","את מי האחים מוכרים לישמעאלים?","יוסף","בנימין","ישמעאל","יוסף נמכר תמורת עשרים כסף."],
+["🍷","מי אמר למי: “את חטאי אני מזכיר היום”","שר המשקים לפרעה","שר האופים לפרעה","שר המשקים ליוסף","שר המשקים שכח את יוסף עוד שנתיים תמימות."],
+["🤝","מי אמר למי: “אנוכי אערבנו מידי תבקשנו”","יהודה ליעקב","ראובן ליעקב","יוסף ליעקב","יהודה ערב לבנימין, ובהמשך הוא גם זה שניגש אל יוסף."],
+["🔮","מי הוא: “צפנת פענח”","יוסף","דניאל","אפרים","עם השם החדש קיבל יוסף מפרעה גם אישה, אסנת בת פוטי פרע."],
+["🥛","מי מכבד את שלושת אורחיו בעוגות, חמאה, חלב ובן בקר?","אברהם","יצחק","ישמעאל","אברהם ישב בפתח האוהל בחום היום, ורץ לקראת האורחים."],
+["😄","מי אמר: “אחרי בלותי היתה לי עדנה ואדוני זקן”","שרה","רבקה","רחב","שרה צחקה בקרבה, ויצחק נקרא על שם הצחוק."],
+["🐑","מי מגלגל את האבן מעל פי הבאר, משקה את הצאן, ולמי נותן נשיקה?","יעקב לרחל","יצחק לרבקה","יעקב ללאה","יעקב נישק את רחל, נשא את קולו ובכה."],
+["🦁","על מי נאמר: “חכלילי עיניים מיין ולבן שיניים מחלב”","יהודה","יוסף","לוי","בברכה הזאת יעקב גם מדמה את יהודה לגור אריה."],
+["📖","מי מבני יעקב שכב עם פילגש אביו?","ראובן","יהודה","גד","יעקב לא שכח זאת, וברכתו לראובן נפתחת במילים “פחז כמים”."],
+["🌙","הנימולים הראשונים המוזכרים בתורה","אברהם וישמעאל","קין והבל","אברהם ויצחק","אברהם היה אז בן 99, וישמעאל בן 13."],
+["🐪","מי נפלה מהגמל ברגע שראתה בפעם הראשונה את יצחק?","רבקה","רחל","שרה","מיד אחר כך רבקה לקחה את הצעיף והתכסתה."],
+["🌸","מי הייתה אמם של: ראובן, שמעון, לוי, יהודה, יששכר, זבולון ודינה?","לאה","רחל","זלפה","לאה בחרה לבניה שמות לפי רגשותיה, ו“יהודה” בא מהודיה."]
+];
+const T=[[18,"אברהם אבינו – יודע הכול"],[14,"יעקב המתחכם"],[9,"יוסף החולם"],[0,"עדיין בגן עדן, כדאי לנסות שוב"]];
+const $=id=>document.getElementById(id);
+let i=0,score=0;
+const shuf=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a};
+function prog(n){const p=n/Q.length*100;$("camel").style.right=p+"%";$("fill").style.width=p+"%"}
+function show(){
+const d=Q[i];prog(i);
+$("medal").textContent=d[0];$("count").textContent="שאלה "+(i+1)+" מתוך "+Q.length;$("q").textContent=d[1];
+$("fb").hidden=true;$("nx").hidden=true;$("ans").innerHTML="";
+shuf([d[2],d[3],d[4]]).forEach(t=>{const b=document.createElement("button");b.className="a";b.textContent=t;b.onclick=()=>pick(b,t===d[2]);$("ans").appendChild(b)});
+}
+function pick(b,right){
+const d=Q[i];
+document.querySelectorAll(".a").forEach(x=>{x.disabled=true;if(x.textContent===d[2])x.classList.add("ok")});
+if(right)score++;else b.classList.add("no");
+$("fb").innerHTML="<strong>"+(right?"נכון!":"לא בדיוק. התשובה: "+d[2])+"</strong>הידעת? "+d[5];
+$("fb").hidden=false;
+$("nx").textContent=i===Q.length-1?"לתוצאה":"לשאלה הבאה";$("nx").hidden=false;$("nx").focus();
+}
+$("nx").onclick=()=>{i++;if(i<Q.length)show();else end()};
+function rank(){return T.find(t=>score>=t[0])[1]}
+function end(){
+prog(Q.length);$("card").hidden=true;$("res").hidden=false;
+$("score").textContent=score+" מתוך "+Q.length;$("rank").textContent=rank();
+$("msg").textContent=score>=18?"כמעט לא פספסתם כלום. כל הכבוד!":score>=14?"ידע מרשים, עוד קצת והגעתם לפסגה.":score>=9?"בסיס טוב, ספר בראשית עוד מחכה לכם.":"זה בסדר, גם אדם וחווה התחילו מאפס.";
+}
+$("again").onclick=()=>{i=0;score=0;$("res").hidden=true;$("card").hidden=false;$("share").textContent="שתפו במשפחה";show()};
+$("share").onclick=async()=>{
+const t="עניתי נכון על "+score+" מתוך "+Q.length+" בחידון “מי אני בספר בראשית”: "+rank()+" 📜 תנסו לנצח אותי: "+location.href;
+try{if(navigator.share){await navigator.share({text:t});return}}catch(e){if(e&&e.name==="AbortError")return}
+try{await navigator.clipboard.writeText(t);$("share").textContent="ההודעה הועתקה, אפשר להדביק"}
+catch(e){$("share").textContent="העתיקו ידנית: "+t}
+};
+show();
+</script>
+</body>
+</html>
